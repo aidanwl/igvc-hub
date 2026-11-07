@@ -1,43 +1,62 @@
-# Astro Starter Kit: Minimal
+# IGVC Hub
 
-```sh
-npm create astro@latest -- --template minimal
+Internal engineering website for the Autonomy Lab at The Cooper Union.
+
+The hub brings together team documentation, repositories, and engineering tools in one place.
+
+## Development
+
+Built with [Astro](https://astro.build/) and [Starlight](https://starlight.astro.build/).
+
+**Requirements:** Node.js 24 and npm.
+
+Clone the repository:
+
+```bash
+git clone https://github.com/aidanwl/igvc-hub.git
+cd igvc-hub
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Install dependencies and start the local development server:
 
-## 🚀 Project Structure
+```bash
+npm ci
+npm run dev
+```
 
-Inside of your Astro project, you'll see the following folders and files:
+Open `http://localhost:4321/`.
+
+To generate the production website:
+
+```bash
+npm run build
+```
+
+Static files are generated in `dist/`.
+
+## Project Structure
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+src/
+├── pages/                 Homepage, repositories, and future tools
+├── components/            Shared UI components
+├── layouts/               Page layouts
+├── styles/                CSS
+└── content/docs/docs/     Starlight documentation
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Documentation
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Documentation is written in Markdown and organized by topic.
 
-Any static assets, like images, can be placed in the `public/` directory.
+To edit or add documentation, see [Editing Documentation](src/content/docs/docs/getting-started/editing-docs.md).
 
-## 🧞 Commands
+Trusted contributors can submit documentation-only pull requests that merge automatically after the build passes.
 
-All commands are run from the root of the project, from a terminal:
+Changes to website code or configuration require the normal maintainer review process.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Deployment
 
-## 👀 Want to learn more?
+GitHub Actions checks that the site builds successfully.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The new hub is being developed to replace the existing mdBook website at `igvc.ee.cooper.edu`. Production deployment is not yet configured for this repository.

@@ -18,6 +18,12 @@ export default defineConfig({
             { autogenerate: {directory: 'docs/getting-started'} },
           ],
         },
+        {
+          label: 'Firmware',
+          items: [
+            { autogenerate: { directory: 'docs/firmware'} },
+          ],
+        },
       ],
       
       editLink: {

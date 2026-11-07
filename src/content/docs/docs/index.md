@@ -1,10 +1,15 @@
 ---
 title: Documentation
-description: Autonomy Lab engineering documentation
+description: Technical documentation for Autonomy Lab
 ---
 
 Welcome to the Autonomy Lab documentation.
 
-Find setup instructions, subsystem documentation, and technical references here.
+## Getting Started
 
-Testing automatic documentation merging.
+- [Editing Documentation](/docs/getting-started/editing-docs/) — How to add or change pages.
+
+## Firmware
+
+- [Repository Structure](/docs/firmware/repository-structure/)
+- [Contributing to Firmware](/docs/firmware/contributing/)

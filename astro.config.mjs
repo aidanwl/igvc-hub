@@ -19,6 +19,10 @@ export default defineConfig({
           ],
         },
       ],
+      
+      editLink: {
+        baseUrl: 'https://github.com/aidanwl/igvc-hub/edit/main/',
+      }
     }),
   ],
 });

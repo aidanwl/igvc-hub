@@ -1,23 +1,30 @@
-
 ---
 title: Editing Documentation
 description: How to edit and add documentation.
 ---
 
-Documentation lives in the <a href="https://github.com/aidanwl/igvc-hub" target="_blank" rel="noopener noreferrer">igvc-hub</a> repository, under `src/content/docs/docs/`.
+Documentation is maintained in the [igvc-hub repository](https://github.com/aidanwl/igvc-hub), under `src/content/docs/docs/`.
+
+You can edit documentation directly on GitHub or locally using a text editor.
 
 ## Editing on GitHub
 
-You don't need to install anything to make small changes.
+For small changes, you don't need to install anything.
 
-1. Open the page you want to edit.
-2. Click **Edit this page**.
-3. Make your changes on GitHub.
-4. Submit a pull request.
+1. Open the documentation page you want to edit.
+2. Click **Edit this page** to open its source on GitHub.
+3. Make your changes.
+4. Click **Commit changes**.
+5. Select **Create a new branch for this commit and start a pull request**.
+6. Submit the pull request.
 
-Documentation-only PRs from trusted collaborators merge automatically after the build passes.
+GitHub handles creating the branch for you.
 
-## Editing locally
+To add a new page, navigate to `src/content/docs/docs/` in the repository and select **Add file → Create new file**.
+
+## Editing Locally
+
+Local development lets you preview changes and work offline.
 
 ### Prerequisites
 
@@ -25,7 +32,7 @@ Documentation-only PRs from trusted collaborators merge automatically after the 
 - Node.js 24
 - npm (included with Node.js)
 
-Check your installation:
+Check that everything is installed:
 
 ```bash
 git --version
@@ -33,9 +40,9 @@ node --version
 npm --version
 ```
 
-If Node.js isn't installed, install Node.js 24 using [Node.js](https://nodejs.org/) or a version manager such as [fnm](https://github.com/Schniz/fnm).
+If necessary, install [Node.js](https://nodejs.org/) or use a version manager such as [fnm](https://github.com/Schniz/fnm).
 
-### Setup
+### Initial Setup
 
 Clone the repository:
 
@@ -50,27 +57,53 @@ Install dependencies:
 npm ci
 ```
 
-Start the local website:
+Start the local development server:
 
 ```bash
 npm run dev
 ```
 
-Open `http://localhost:4321/docs/`.
+Open `http://localhost:4321/docs/` to preview the documentation.
 
-You can now edit Markdown files in `src/content/docs/docs/`. The local preview updates automatically when you save.
+Changes to Markdown files are reflected automatically when you save.
 
-### Submitting changes
+### Working with Branches
 
-Create a branch, commit your changes, and open a pull request to `main`.
+Create a new branch for each change or related set of changes. Don't push directly to `main`.
 
-You can edit documentation offline after the initial setup. An internet connection is needed to push your changes.
+Start from the latest `main`:
 
-## Adding pages
+```bash
+git switch main
+git pull --ff-only
+git switch -c docs/motor-driver
+```
 
-Create a `.md` file in the appropriate documentation directory.
+After editing your files, commit and push:
 
-Each page needs frontmatter:
+```bash
+git add src/content/docs/docs/
+git commit -m "Document motor driver"
+git push -u origin docs/motor-driver
+```
+
+Open a pull request into `main` on GitHub.
+
+Use short, descriptive branch names, such as:
+
+- `docs/motor-driver`
+- `docs/can-protocol`
+- `docs/setup-guide`
+
+After your PR merges, switch back to `main` and pull the latest changes before starting another branch.
+
+You can edit files offline after the initial setup. An internet connection is only needed for operations such as pulling, pushing, or installing dependencies.
+
+## Adding and Organizing Pages
+
+Create Markdown files (`.md`) in the appropriate section of `src/content/docs/docs/`.
+
+Each page needs frontmatter at the top:
 
 ```yaml
 ---
@@ -79,5 +112,37 @@ description: A short description.
 ---
 ```
 
-Starlight automatically adds pages to the sidebar in configured sections.
+Use folders to group related features or subsystems. For example:
+
+```text
+firmware/
+├── motors/
+│   ├── md30c.md
+│   └── pwm.md
+├── communications/
+│   └── can.md
+└── sensors/
+    └── encoders.md
+```
+
+A few guidelines:
+
+- Keep related documentation together.
+- Use descriptive filenames and titles.
+- Create folders when multiple pages belong together.
+- Don't create a separate page for every small function or detail.
+
+New Markdown pages and folders are automatically added to the sidebar within configured documentation sections.
+
+On GitHub, you can create a folder and file together by entering a path such as `firmware/motors/pwm.md` when creating a new file.
+
+## Publishing Changes
+
+All documentation changes go through pull requests.
+
+**Documentation-only PRs from trusted collaborators merge automatically** once the website passes its build checks. No manual approval or merge is needed.
+
+Changes to website code, configuration, or other files require the normal maintainer review process.
+
+Once documentation is merged, it will appear on the website after the next deployment.
 

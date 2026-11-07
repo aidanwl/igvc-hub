@@ -1,0 +1,36 @@
+
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+const repositories = [
+  {
+    name: 'AutonomyLab-Firmware',
+    description: 'RP2350 firmware, hardware drivers, and examples.',
+    url: 'https://github.com/hoseony/AutonomyLab-Firmware',
+  },
+  {
+    name: 'igvc-hub',
+    description: 'This website, documentation, and engineering tools.',
+    url: 'https://github.com/aidanwl/igvc-hub',
+  },
+];
+---
+
+<SiteLayout title="Repositories">
+  <main>
+    <h1>Repositories</h1>
+    <p>Source code and projects maintained by the team.</p>
+
+    <ul class="resources">
+      {repositories.map((repo) => (
+        <li>
+          <a href={repo.url} target="_blank" rel="noopener noreferrer">
+            {repo.name} ↗
+          </a>
+          <p>{repo.description}</p>
+        </li>
+      ))}
+    </ul>
+  </main>
+</SiteLayout>
+

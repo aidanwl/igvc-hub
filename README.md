@@ -54,9 +54,3 @@ To edit or add documentation, see [Editing Documentation](src/content/docs/docs/
 Trusted contributors can submit documentation-only pull requests that merge automatically after the build passes.
 
 Changes to website code or configuration require the normal maintainer review process.
-
-## Deployment
-
-GitHub Actions checks that the site builds successfully.
-
-The new hub is being developed to replace the existing mdBook website at `igvc.ee.cooper.edu`. Production deployment is not yet configured for this repository.

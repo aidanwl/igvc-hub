@@ -1,0 +1,5 @@
+# Maintainer owns everything
+* @aidanwl
+
+# Markdown documentation can be merged without approval
+/src/content/docs/docs/**/*.md`
